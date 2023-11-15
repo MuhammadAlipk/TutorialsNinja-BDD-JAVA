@@ -27,20 +27,15 @@ public class Login {
     }
 
     @When("User enters a valid username and valid password.")
+    @And("Clicks on the login button.")
+    @Then("user should be authenticated and should be navigated to the home page of application.")
     public void userEntersAValidUsernameAndValidPassword() {
 
         loginPage.Login("demo@demo.com", "password");
+        loginPage.ReturnNavigationItem("Tablets").click();
         driver.quit();
     }
-
-   /* @And("Clicks on the login button.")
-    public void clicksOnTheLoginButton() {
-    }
-
-    @Then("user should be authenticated and should be navigated to the home page of application.")
-    public void userShouldBeAuthenticatedAndShouldBeNavigatedToTheHomePageOfApplication() {
-    }
-
+/*
     @Given("The user will navigate to the application URL")
     public void theUserWillNavigateToTheApplicationURL() {
     }

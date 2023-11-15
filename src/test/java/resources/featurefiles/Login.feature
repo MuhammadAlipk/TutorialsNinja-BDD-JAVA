@@ -5,6 +5,6 @@ Feature: Login Feature
   Scenario: Login with valid credentials
     Given The user will navigate to the application.
     When User enters a valid username and valid password.
-   # And Clicks on the login button.
-   # Then user should be authenticated and should be navigated to the home page of application.
+    And Clicks on the login button.
+    Then user should be authenticated and should be navigated to the home page of application.
 

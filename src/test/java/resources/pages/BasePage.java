@@ -3,6 +3,7 @@ package resources.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class BasePage {
 
@@ -36,6 +37,11 @@ public class BasePage {
     public By btn_GlobalSearch = By.cssSelector("#search > span > button");
     public By btn_Home = By.cssSelector("#logo > h1 > a");
     //</editor-fold>
+
+    public WebElement ReturnNavigationItem(String ItemName)
+    {
+       return  _driver.findElement(By.xpath("//*[@id=\"menu\"]/div[2]/ul/li/a[text()='"+ ItemName+ "']"));
+    }
 
     public void click(By locator, String ElementName)
     {
