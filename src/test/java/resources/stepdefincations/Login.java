@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import resources.pages.LoginPage;
 
 import java.util.concurrent.TimeUnit;
@@ -26,21 +27,27 @@ public class Login {
 
     }
 
-    @When("User enters a valid username and valid password.")
+    @When("User enters a valid {string} and valid {string}.")
+
+    public void userEntersAValidUsernameAndValidPassword(String UName, String password) {
+
+        loginPage.Login(UName, password);
+    }
+
     @And("Clicks on the login button.")
     @Then("user should be authenticated and should be navigated to the home page of application.")
-    public void userEntersAValidUsernameAndValidPassword() {
-
-        loginPage.Login("demo@demo.com", "password");
-        loginPage.ReturnNavigationItem("Tablets").click();
-        driver.quit();
+    public  void  userClicksOnLoginButton()
+    {
+        loginPage.click(loginPage.btn_LoginButton, "LoginButton");
+        Assert.assertEquals(loginPage._driver.getTitle(), "My Account");
+        //driver.quit();
     }
 /*
     @Given("The user will navigate to the application URL")
     public void theUserWillNavigateToTheApplicationURL() {
     }
 
-    @When("User Enters a valid a valid username and invalid password")
+    @When("User Enters a valid username and invalid password")
     public void userEntersAValidAValidUsernameAndInvalidPassword() {
     }
 
