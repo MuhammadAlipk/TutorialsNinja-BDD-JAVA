@@ -8,4 +8,5 @@ Feature: Login Feature
     And Clicks on the login button.
     Then user should be authenticated and should be navigated to the home page of application.
 
+
 #Scenario: Login with invalid password but valid username.
