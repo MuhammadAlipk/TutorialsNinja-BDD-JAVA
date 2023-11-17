@@ -35,35 +35,24 @@ public class Login {
     }
 
     @And("Clicks on the login button.")
-    @Then("user should be authenticated and should be navigated to the home page of application.")
+
     public  void  userClicksOnLoginButton()
     {
         loginPage.click(loginPage.btn_LoginButton, "LoginButton");
+    }
+    @Then("user should be authenticated and should be navigated to the home page of application.")
+    public void authWithValidCredentials()
+    {
         Assert.assertEquals(loginPage._driver.getTitle(), "My Account");
-        //driver.quit();
-    }
-/*
-    @Given("The user will navigate to the application URL")
-    public void theUserWillNavigateToTheApplicationURL() {
+        driver.quit();
     }
 
-    @When("User Enters a valid username and invalid password")
-    public void userEntersAValidAValidUsernameAndInvalidPassword() {
+    @Then("user should not be authenticated and there should be an error message.")
+    public void authWithInvalidCredentials()
+    {
+        Assert.assertNotEquals(loginPage._driver.getTitle(), "My Account");
+        driver.quit();
     }
 
-    @And("User clicks on login button")
-    public void userClicksOnLoginButton() {
-    }
 
-    @Then("System should not authenticate user and should show proper error message.")
-    public void systemShouldNotAuthenticateUserAndShouldShowProperErrorMessage() {
-    }
-
-    @When("User Enters a invalid a valid username and valid password")
-    public void userEntersAInvalidAValidUsernameAndValidPassword() {
-    }
-
-    @When("User Enters a invalid a valid username and invalid password")
-    public void userEntersAInvalidAValidUsernameAndInvalidPassword() {
-    }*/
 }
