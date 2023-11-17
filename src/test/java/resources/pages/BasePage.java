@@ -1,5 +1,6 @@
 package resources.pages;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -10,6 +11,7 @@ public class BasePage {
     //<editor-fold desc="Global Properties">
     public WebDriver _driver;
     public String baseUrl = "https://tutorialsninja.com/demo/";
+    public Logger loggerObj = Logger.getLogger(BasePage.class);
 
     public BasePage(WebDriver driver)
     {
@@ -20,7 +22,7 @@ public class BasePage {
     //<editor-fold desc="Top Navigation BAr Links">
     public By MyAccount = By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[1]");
     public By Login_Link = By.cssSelector("#top-links > ul > li.dropdown.open > ul > li:nth-child(2) > a");
-    public By linl_Registration = By.cssSelector("#top-links > ul > li.dropdown.open > ul > li:nth-child(1) > a");
+    public By linlk_Registration = By.cssSelector("#top-links > ul > li.dropdown.open > ul > li:nth-child(1) > a");
     public By link_PhoneNumber = By.cssSelector("#top-links > ul > li:nth-child(1) > span");
     public By link_WishList= By.cssSelector("#wishlist-total > span");
     public By link_CartTopNav = By.cssSelector("#top-links > ul > li:nth-child(4) > a > span");
@@ -43,15 +45,29 @@ public class BasePage {
        return  _driver.findElement(By.xpath("//*[@id=\"menu\"]/div[2]/ul/li/a[text()='"+ ItemName+ "']"));
     }
 
-    public void click(By locator, String ElementName)
+    public WebElement ReturnTopBArElement(String itemNaem)
     {
+        return _driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[text()='"+itemNaem+"']"));
+    }
+
+    public void click(By locator, String ElementName) throws Exception {
         try {
-            _driver.findElement(locator).click();
+
+            if(_driver.findElement(locator).isDisplayed() && _driver.findElement(locator).isEnabled())
+            {
+                _driver.findElement(locator).click();
+            }
+            else
+            {
+                throw new Exception(ElementName + "is not displayed or is not enabled");
+            }
+
         }
         catch (NoSuchElementException exc)
         {
-
+            throw new Exception("Something went wrong please contact automation team");
         }
+
 
     }
 

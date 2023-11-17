@@ -34,8 +34,7 @@ public class Login {
     }
 
     @And("Clicks on the login button.")
-    public  void  userClicksOnLoginButton()
-    {
+    public  void  userClicksOnLoginButton() throws Exception {
         loginPage.click(loginPage.btn_LoginButton, "LoginButton");
     }
     @Then("user should be authenticated and should be navigated to the home page of application.")
