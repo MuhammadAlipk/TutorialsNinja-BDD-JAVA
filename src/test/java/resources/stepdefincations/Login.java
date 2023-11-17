@@ -28,14 +28,12 @@ public class Login {
     }
 
     @When("User enters a valid {string} and valid {string}.")
-
     public void userEntersAValidUsernameAndValidPassword(String UName, String password) {
 
         loginPage.Login(UName, password);
     }
 
     @And("Clicks on the login button.")
-
     public  void  userClicksOnLoginButton()
     {
         loginPage.click(loginPage.btn_LoginButton, "LoginButton");
