@@ -62,9 +62,12 @@ public class BasePage {
                 throw new Exception(ElementName + "is not displayed or is not enabled");
             }
 
+
+
         }
         catch (NoSuchElementException exc)
         {
+            loggerObj.debug(exc.getMessage());
             throw new Exception("Something went wrong please contact automation team");
         }
 
