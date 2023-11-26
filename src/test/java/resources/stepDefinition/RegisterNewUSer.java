@@ -1,4 +1,4 @@
-package resources.stepdefincations;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;

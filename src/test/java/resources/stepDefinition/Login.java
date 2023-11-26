@@ -1,4 +1,4 @@
-package resources.stepdefincations;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,7 +10,6 @@ import org.testng.Assert;
 import resources.pages.LoginPage;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class Login {
 
