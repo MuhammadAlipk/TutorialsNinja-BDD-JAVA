@@ -1,4 +1,4 @@
-package resources.stepdefincations;
+package resources.stepDefinition;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import resources.pages.LoginPage;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 public class Login {
 
@@ -19,8 +19,9 @@ public class Login {
     public void theUserWillNavigateToTheApplication() {
 
         driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
         loginPage = new LoginPage(driver);
         driver.get(loginPage.baseUrl);
         driver.manage().window().maximize();

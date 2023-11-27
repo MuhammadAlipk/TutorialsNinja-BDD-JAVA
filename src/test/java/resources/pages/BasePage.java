@@ -45,12 +45,12 @@ public class BasePage {
        return  _driver.findElement(By.xpath("//*[@id=\"menu\"]/div[2]/ul/li/a[text()='"+ ItemName+ "']"));
     }
 
-    public WebElement ReturnTopBArElement(String itemNaem)
+    public WebElement ReturnTopBarElement(String itemName)
     {
-        return _driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[text()='"+itemNaem+"']"));
+        return _driver.findElement(By.xpath("//*[@id=\"top-links\"]/ul/li[2]/a/span[text()='"+itemName+"']"));
     }
 
-    public void click(By locator, String ElementName) throws Exception {
+    public void click(By locator, String ElementName){
         try {
 
             if(_driver.findElement(locator).isDisplayed() && _driver.findElement(locator).isEnabled())
@@ -61,13 +61,55 @@ public class BasePage {
             {
                 throw new Exception(ElementName + "is not displayed or is not enabled");
             }
-
         }
-        catch (NoSuchElementException exc)
+        catch (Exception exc)
         {
-            throw new Exception("Something went wrong please contact automation team");
+            loggerObj.debug("Exception Location: "+ ElementName + " "  +exc.getMessage());
         }
 
+
+    }
+
+    public  void enterText(By locator, String text, String ElementName)
+    {
+        try{
+
+            if(_driver.findElement(locator).isDisplayed() && _driver.findElement(locator).isEnabled())
+            {
+                _driver.findElement(locator).sendKeys(text);
+            }
+            else
+            {
+                throw new Exception(ElementName + "is not displayed or is not enabled");
+            }
+
+        }
+        catch (Exception exc)
+        {
+            loggerObj.debug("Exception Location: "+ ElementName + " "  +exc.getMessage());
+        }
+
+    }
+    public String getText(By locator, String ElementName)
+    {
+        try{
+
+
+            if(_driver.findElement(locator).isDisplayed() && _driver.findElement(locator).isEnabled())
+            {
+                 return _driver.findElement(locator).getText();
+            }
+            else
+            {
+                throw new Exception(ElementName + "is not displayed or is not enabled");
+            }
+
+        }
+        catch (Exception exc)
+        {
+            loggerObj.debug("Exception Location: "+ ElementName + " "  +exc.getMessage());
+            return null;
+        }
 
     }
 
