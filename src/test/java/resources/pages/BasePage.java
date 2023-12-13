@@ -5,17 +5,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import resources.Utilties.ConfigurationFileReader;
 
 public class BasePage {
 
     //<editor-fold desc="Global Properties">
     public WebDriver _driver;
-    public String baseUrl = "https://tutorialsninja.com/demo/";
-    public Logger loggerObj = Logger.getLogger(BasePage.class);
+
+    ConfigurationFileReader fileReader;
+    public String baseUrl;
+    public String userName;
+    public String Password;
+    public Logger loggerObj;
 
     public BasePage(WebDriver driver)
     {
         _driver = driver;
+        fileReader = new ConfigurationFileReader();
+        baseUrl = fileReader.getSingleValue("BaseURl");
+        userName = fileReader.getSingleValue("UserName");
+        Password = fileReader.getSingleValue("Password");
+        loggerObj = Logger.getLogger(BasePage.class);
     }
     //</editor-fold>
 

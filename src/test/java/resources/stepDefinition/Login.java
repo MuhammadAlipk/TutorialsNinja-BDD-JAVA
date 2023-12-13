@@ -28,11 +28,42 @@ public class Login {
 
     }
 
-    @When("User enters a valid {string} and valid {string}.")
-    public void userEntersAValidUsernameAndValidPassword(String UName, String password) {
+    @When("User enters a valid User Name and valid Password.")
+    public void userEntersAValidUsernameAndValidPassword() {
 
-        loginPage.Login(UName, password);
+        loginPage.Login(loginPage.userName, loginPage.Password);
     }
+
+    @When("User enters a invalid UserName and valid Password.")
+    public void userEntersAInvalidUsernameAndValidPassword() {
+
+        loginPage.Login("adsfsdaf@gmail.com", loginPage.Password);
+    }
+    @When("User enters a valid UserName and invalid password.")
+    public void userEntersAValidUsernameAndInvalidPassword() {
+
+        loginPage.Login(loginPage.userName, "123654");
+    }
+
+    @When("User enters a valid UserName and empty password.")
+    public void userEntersAValidUsernameAndEmptyPassword() {
+
+        loginPage.Login(loginPage.userName, "");
+    }
+
+    @When("User enters a Empty UserName and Valid password.")
+    public void userEntersEmptyUsernameAndValidPassword() {
+
+        loginPage.Login("", loginPage.Password);
+    }
+
+    @When("User enters a Empty UserName and Empty password.")
+    public void userEntersEmptyUsernameAndEmptyPassword() {
+
+        loginPage.Login("", "");
+    }
+
+
 
     @And("Clicks on the login button.")
     public  void  userClicksOnLoginButton() throws Exception {
