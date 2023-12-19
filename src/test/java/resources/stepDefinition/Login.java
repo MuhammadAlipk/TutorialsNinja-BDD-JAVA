@@ -18,9 +18,7 @@ public class Login {
     @Given("The user will navigate to the application.")
     public void theUserWillNavigateToTheApplication() {
 
-       // driver = new ChromeDriver();
-
-
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(30));
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));
