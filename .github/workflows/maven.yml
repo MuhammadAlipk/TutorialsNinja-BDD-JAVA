@@ -28,6 +28,9 @@ jobs:
           java-version: '11'
           distribution: 'temurin'
 
+      - name: Check Chrome Version
+        run: google-chrome --version
+
       - name: Set up Chrome
         uses: browser-actions/setup-chrome@latest
         with:
